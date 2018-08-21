@@ -1,0 +1,101 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+    id 'jacoco'
+}
+
+group 'com.github.mgljava'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.0'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'org.springframework.boot:spring-boot-starter-test:2.0.4.RELEASE'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.2.0"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:5.2.0"
+    testImplementation 'org.mockito:mockito-junit-jupiter:2.21.0'
+}
+
+checkstyle {
+    toolVersion '8.1'
+    ignoreFailures = false
+    configFile file("$project.rootDir/config/checkstyle/checkstyle.xml")
+    sourceSets = [sourceSets.main]
+
+    checkstyleMain {
+        source = 'src/main/java'
+    }
+}
+
+copy {
+    from "./config/githooks/"
+    into "./.git/hooks/"
+    fileMode 0755
+}
+test {
+    testLogging {
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+    useJUnitPlatform()
+}
+jacocoTestReport {
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        csv.enabled = false
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(
+                    dir: it,
+                    exclude: [
+                            '**/HelloWorld.class',
+                            '**/model/*.class'
+                    ]
+            )
+        })
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            excludes = [
+                    '**.HelloWorld',
+                    '**.model.*'
+            ]
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.0
+            }
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.0
+            }
+            limit {
+                counter = 'METHOD'
+                value = 'COVEREDRATIO'
+                minimum = 0.0
+            }
+            limit {
+                counter = 'CLASS'
+                value = 'COVEREDRATIO'
+                minimum = 0.0
+            }
+        }
+    }
+    dependsOn(jacocoTestReport)
+}
+
+check.dependsOn jacocoTestCoverageVerification
