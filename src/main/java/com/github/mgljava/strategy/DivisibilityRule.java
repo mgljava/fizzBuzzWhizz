@@ -26,4 +26,9 @@ public class DivisibilityRule implements Rule {
   public boolean isApplicable() {
     return applicable;
   }
+
+  @Override
+  public void clearApplicable() {
+    applicable = false;
+  }
 }

@@ -13,14 +13,15 @@ public class RuleEngine {
   public RuleEngine(Words words) {
     this.words = words;
     rules.add(new ContainsRule());
-    rules.add(new DivisibilityRule());
     rules.add(new TwoDivisibilityRule());
+    rules.add(new DivisibilityRule());
   }
 
   public String get(Integer position) {
     for (Rule rule : rules) {
       String result = rule.get(position, words);
       if (rule.isApplicable()) {
+        rule.clearApplicable();
         return result;
       }
     }

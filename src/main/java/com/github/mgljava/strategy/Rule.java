@@ -17,4 +17,6 @@ public interface Rule {
   String get(int position, Words words);
 
   boolean isApplicable();
+
+  void clearApplicable();
 }
