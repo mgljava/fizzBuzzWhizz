@@ -9,11 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Teacher {
+public class GameNumber {
 
-  private GameNumber gameNumber;
-
-  public GameNumber say(int fizz, int buzz, int whizz) {
-    return new GameNumber(fizz, buzz, whizz);
-  }
+  private Integer fizz;
+  private Integer buzz;
+  private Integer whizz;
 }

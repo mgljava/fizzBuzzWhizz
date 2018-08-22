@@ -1,29 +1,25 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgl.studen.entity.Teacher;
+import com.github.mgl.studen.entity.GameNumber;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 public class DivisibilityRule implements CountOffRule {
 
-  private Teacher teacher;
-
   @Override
-  public boolean sayResultByNumber(int currentNumber) {
+  public boolean matchers(int currentNumber, GameNumber gameNumber) {
     boolean flag = false;
-    if (currentNumber % teacher.getFizz() == 0) {
+    if (currentNumber % gameNumber.getFizz() == 0) {
       System.out.println(FIZZ);
       flag = true;
     }
 
-    if (currentNumber % teacher.getBuzz() == 0) {
+    if (currentNumber % gameNumber.getBuzz() == 0) {
       System.out.println(BUZZ);
       flag = true;
     }
 
-    if (currentNumber % teacher.getWhizz() == 0) {
+    if (currentNumber % gameNumber.getWhizz() == 0) {
       System.out.println(WHIZZ);
       flag = true;
     }

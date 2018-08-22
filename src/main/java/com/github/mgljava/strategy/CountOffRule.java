@@ -1,5 +1,7 @@
 package com.github.mgljava.strategy;
 
+import com.github.mgl.studen.entity.GameNumber;
+
 public interface CountOffRule {
 
   String FIZZ = "Fizz";
@@ -11,5 +13,5 @@ public interface CountOffRule {
   String FIZZ_BUZZ_WHIZZ = "FizzBuzzWhizz";
 
 
-  boolean sayResultByNumber(int currentNumber);
+  boolean matchers(int currentNumber, GameNumber gameNumber);
 }
