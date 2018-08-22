@@ -4,7 +4,7 @@ import com.github.mgl.studen.entity.Words;
 
 public class ContainsRule implements Rule {
 
-  boolean applicable = false;
+  private boolean applicable = false;
 
   @Override
   public String get(int position, Words words) {
