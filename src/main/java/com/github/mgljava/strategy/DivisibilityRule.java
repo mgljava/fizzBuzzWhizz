@@ -1,28 +1,29 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgl.studen.entity.GameNumber;
-import lombok.AllArgsConstructor;
+import com.github.mgl.studen.entity.Words;
 
-@AllArgsConstructor
-public class DivisibilityRule implements CountOffRule {
+public class DivisibilityRule implements Rule {
+
+  private boolean applicable = false;
 
   @Override
-  public boolean matchers(int currentNumber, GameNumber gameNumber) {
-    boolean flag = false;
-    if (currentNumber % gameNumber.getFizz() == 0) {
-      System.out.println(FIZZ);
-      flag = true;
+  public String get(int position, Words words) {
+    String result = String.valueOf(position);
+    if (position % words.getFizz() == 0) {
+      result = FIZZ;
+      applicable = true;
+    } else if (position % words.getBuzz() == 0) {
+      result = BUZZ;
+      applicable = true;
+    } else if (position % words.getWhizz() == 0) {
+      result = WHIZZ;
+      applicable = true;
     }
+    return result;
+  }
 
-    if (currentNumber % gameNumber.getBuzz() == 0) {
-      System.out.println(BUZZ);
-      flag = true;
-    }
-
-    if (currentNumber % gameNumber.getWhizz() == 0) {
-      System.out.println(WHIZZ);
-      flag = true;
-    }
-    return flag;
+  @Override
+  public boolean isApplicable() {
+    return applicable;
   }
 }

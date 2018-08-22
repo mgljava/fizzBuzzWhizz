@@ -1,8 +1,10 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgl.studen.entity.GameNumber;
+import com.github.mgl.studen.entity.Words;
 
-public interface CountOffRule {
+public interface Rule {
+
+
 
   String FIZZ = "Fizz";
   String BUZZ = "Buzz";
@@ -12,6 +14,7 @@ public interface CountOffRule {
   String BUZZ_WHIZZ = "BuzzWhizz";
   String FIZZ_BUZZ_WHIZZ = "FizzBuzzWhizz";
 
+  String get(int position, Words words);
 
-  boolean matchers(int currentNumber, GameNumber gameNumber);
+  boolean isApplicable();
 }

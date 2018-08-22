@@ -1,6 +1,6 @@
 package com.github.mgl.studen.entity;
 
-import com.github.mgljava.strategy.CountOffRule;
+import com.github.mgljava.strategy.RuleEngine;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,9 +12,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Student {
 
-  private GameNumber gameNumber;
+  private RuleEngine ruleEngine;
+  private Integer position;
 
-  public boolean numberOff(CountOffRule countOffRule, int currentNumber) {
-    return countOffRule.matchers(currentNumber, gameNumber);
+  public String count() {
+    return ruleEngine.get(position);
   }
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class GameNumber {
+public class Words {
 
   private Integer fizz;
   private Integer buzz;

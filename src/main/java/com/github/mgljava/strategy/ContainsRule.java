@@ -1,29 +1,29 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgl.studen.entity.GameNumber;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.github.mgl.studen.entity.Words;
 
-@AllArgsConstructor
-@Data
-public class ContainsRule implements CountOffRule {
+public class ContainsRule implements Rule {
+
+  boolean applicable = false;
 
   @Override
-  public boolean matchers(int currentNumber, GameNumber gameNumber) {
-    boolean flag = false;
+  public String get(int position, Words words) {
+    String result = String.valueOf(position);
+    if (String.valueOf(position).contains(String.valueOf(words.getFizz()))) {
+      applicable = true;
+      result = FIZZ;
+    } else if (String.valueOf(position).contains(String.valueOf(words.getBuzz()))) {
+      applicable = true;
+      result = BUZZ;
+    } else if (String.valueOf(position).contains(String.valueOf(words.getWhizz()))) {
+      applicable = true;
+      result = WHIZZ;
+    }
+    return result;
+  }
 
-    if (String.valueOf(currentNumber).contains(String.valueOf(gameNumber.getFizz()))) {
-      System.out.println(FIZZ);
-      flag = true;
-    }
-    if (String.valueOf(currentNumber).contains(String.valueOf(gameNumber.getBuzz()))) {
-      System.out.println(BUZZ);
-      flag = true;
-    }
-    if (String.valueOf(currentNumber).contains(String.valueOf(gameNumber.getWhizz()))) {
-      System.out.println(WHIZZ);
-      flag = true;
-    }
-    return flag;
+  @Override
+  public boolean isApplicable() {
+    return applicable;
   }
 }

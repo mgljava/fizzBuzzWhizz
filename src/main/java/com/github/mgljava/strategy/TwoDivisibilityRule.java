@@ -1,35 +1,37 @@
 package com.github.mgljava.strategy;
 
+import com.github.mgl.studen.entity.Words;
 
-import com.github.mgl.studen.entity.GameNumber;
-import lombok.AllArgsConstructor;
+public class TwoDivisibilityRule implements Rule {
 
-@AllArgsConstructor
-public class TwoDivisibilityRule implements CountOffRule {
+  private boolean applicable = false;
 
   @Override
-  public boolean matchers(int currentNumber, GameNumber gameNumber) {
-    boolean flag = false;
-
-    if (currentNumber % gameNumber.getFizz() == 0 &&
-        currentNumber % gameNumber.getBuzz() == 0 &&
-        currentNumber % gameNumber.getWhizz() == 0) {
-      System.out.println(FIZZ_BUZZ_WHIZZ);
-      flag = true;
+  public String get(int position, Words words) {
+    String result = String.valueOf(position);
+    if (position % words.getFizz() == 0 &&
+        position % words.getBuzz() == 0 &&
+        position % words.getWhizz() == 0) {
+      result = FIZZ_BUZZ_WHIZZ;
+      applicable = true;
+    } else if (position % words.getFizz() == 0
+        && position % words.getBuzz() == 0) {
+      result = FIZZ_BUZZ;
+      applicable = true;
+    } else if (position % words.getFizz() == 0
+        && position % words.getWhizz() == 0) {
+      result = FIZZ_WHIZZ;
+      applicable = true;
     }
-
-    if (currentNumber % gameNumber.getFizz() == 0 && currentNumber % gameNumber.getBuzz() == 0) {
-      System.out.println(FIZZ_BUZZ);
-      flag = true;
-    }
-    if (currentNumber % gameNumber.getFizz() == 0 && currentNumber % gameNumber.getWhizz() == 0) {
-      System.out.println(FIZZ_WHIZZ);
-      flag = true;
-    }
-    if (currentNumber % gameNumber.getBuzz() == 0 && currentNumber % gameNumber.getWhizz() == 0) {
+    if (position % words.getBuzz() == 0 && position % words.getWhizz() == 0) {
       System.out.println(BUZZ_WHIZZ);
-      flag = true;
+      applicable = true;
     }
-    return flag;
+    return result;
+  }
+
+  @Override
+  public boolean isApplicable() {
+    return applicable;
   }
 }

@@ -1,28 +1,18 @@
 package com.github.mgljava;
 
-import com.github.mgl.studen.entity.GameNumber;
 import com.github.mgl.studen.entity.Student;
 import com.github.mgl.studen.entity.Teacher;
-import com.github.mgljava.strategy.ContainsRule;
-import com.github.mgljava.strategy.DivisibilityRule;
-import com.github.mgljava.strategy.TwoDivisibilityRule;
+import com.github.mgl.studen.entity.Words;
+import com.github.mgljava.strategy.RuleEngine;
 
 public class StudentTest {
 
   public static void main(String[] args) {
-    GameNumber gameNumber = new Teacher().say(3, 5, 7);
-
+    Words words = new Teacher().say(3, 5, 7);
+    RuleEngine ruleEngine = new RuleEngine(words);
     for (int i = 1; i < 100; i++) {
-      Student student = new Student(gameNumber);
-      if (student.numberOff(new ContainsRule(), i)) {
-
-      } else if (student.numberOff(new TwoDivisibilityRule(), i)) {
-
-      } else if (student.numberOff(new DivisibilityRule(), i)) {
-
-      } else {
-        System.out.println(i);
-      }
+      Student student = new Student(ruleEngine, i);
+      System.out.println(student.count());
     }
   }
 }
