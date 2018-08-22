@@ -17,7 +17,7 @@ public class RuleEngine {
     rules.add(new DivisibilityRule());
   }
 
-  public String get(Integer position) {
+  public String getResult(Integer position) {
     for (Rule rule : rules) {
       String result = rule.get(position, words);
       if (rule.isApplicable()) {

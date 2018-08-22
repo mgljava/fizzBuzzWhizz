@@ -16,6 +16,6 @@ public class Student {
   private Integer position;
 
   public String count() {
-    return ruleEngine.get(position);
+    return ruleEngine.getResult(position);
   }
 }
