@@ -45,3 +45,30 @@ Buzz
 
 ##### 2.使用策略模式替换掉 if-else。
 ##### 3.常量定义应该在本类中。
+
+#### 二次改进  
+##### 1.抽取Teacher对象：
+* behavior：Words say(fizz, buzz, whizz);  
+##### 2.抽取Student对象：  
+* properties：   
+    1. position   
+    2. RuleEngine  
+* behavior： count 
+##### 3.抽取Words对象
+* properties:  
+    1. fizz
+    2. buzz
+    3. whizz
+##### 4.抽取规则引擎对象：RuleEngine
+* properties: 
+    1. words: Words
+    2. rules: List<Rule>
+##### 5.抽取规则对象接口：Rule
+* properties:  
+    1. 常量定义
+* behavior： 
+    1. getResultByPosition(int position, Words words): String
+    2. isApplicable(): boolean 设置标记
+    3. clearApplicable: void 清除flag标记
+##### 6.不同的规则实现相同的接口有不同的实现    
+  

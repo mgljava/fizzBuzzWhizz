@@ -7,7 +7,7 @@ public class ContainsRule implements Rule {
   private boolean applicable = false;
 
   @Override
-  public String get(int position, Words words) {
+  public String getResultByPosition(int position, Words words) {
     String result = String.valueOf(position);
     if (String.valueOf(position).contains(String.valueOf(words.getFizz()))) {
       applicable = true;

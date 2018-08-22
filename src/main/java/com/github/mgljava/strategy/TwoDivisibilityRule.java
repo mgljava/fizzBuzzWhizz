@@ -7,7 +7,7 @@ public class TwoDivisibilityRule implements Rule {
   private boolean applicable = false;
 
   @Override
-  public String get(int position, Words words) {
+  public String getResultByPosition(int position, Words words) {
     String result = String.valueOf(position);
     if (position % words.getFizz() == 0 &&
         position % words.getBuzz() == 0 &&

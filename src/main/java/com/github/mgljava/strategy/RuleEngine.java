@@ -19,7 +19,7 @@ public class RuleEngine {
 
   public String getResult(Integer position) {
     for (Rule rule : rules) {
-      String result = rule.get(position, words);
+      String result = rule.getResultByPosition(position, words);
       if (rule.isApplicable()) {
         rule.clearApplicable();
         return result;

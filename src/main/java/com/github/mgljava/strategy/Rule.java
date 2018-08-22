@@ -4,8 +4,6 @@ import com.github.mgl.studen.entity.Words;
 
 public interface Rule {
 
-
-
   String FIZZ = "Fizz";
   String BUZZ = "Buzz";
   String WHIZZ = "Whizz";
@@ -14,7 +12,7 @@ public interface Rule {
   String BUZZ_WHIZZ = "BuzzWhizz";
   String FIZZ_BUZZ_WHIZZ = "FizzBuzzWhizz";
 
-  String get(int position, Words words);
+  String getResultByPosition(int position, Words words);
 
   boolean isApplicable();
 
