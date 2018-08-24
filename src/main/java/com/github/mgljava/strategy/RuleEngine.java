@@ -1,6 +1,6 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgl.studen.entity.Words;
+import com.github.mgljava.entity.Words;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +8,6 @@ public class RuleEngine {
 
   private Words words;
   private final List<Rule> rules = new ArrayList<>();
-
 
   public RuleEngine(Words words) {
     this.words = words;

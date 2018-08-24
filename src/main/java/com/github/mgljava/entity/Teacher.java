@@ -1,4 +1,4 @@
-package com.github.mgl.studen.entity;
+package com.github.mgljava.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgl.studen.entity.Words;
+import com.github.mgljava.entity.Words;
 
 public class DivisibilityRule implements Rule {
 

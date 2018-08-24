@@ -1,8 +1,8 @@
 package com.github.mgljava;
 
-import com.github.mgl.studen.entity.Student;
-import com.github.mgl.studen.entity.Teacher;
-import com.github.mgl.studen.entity.Words;
+import com.github.mgljava.entity.Student;
+import com.github.mgljava.entity.Teacher;
+import com.github.mgljava.entity.Words;
 import com.github.mgljava.strategy.RuleEngine;
 
 public class StudentTest {
