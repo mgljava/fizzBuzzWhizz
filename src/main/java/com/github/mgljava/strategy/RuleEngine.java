@@ -1,19 +1,16 @@
 package com.github.mgljava.strategy;
 
 import com.github.mgljava.entity.Words;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RuleEngine {
 
   private Words words;
-  private final List<Rule> rules = new ArrayList<>();
+  private List<Rule> rules;
 
-  public RuleEngine(Words words) {
+  public RuleEngine(Words words, List<Rule> rules) {
     this.words = words;
-    rules.add(new ContainsRule());
-    rules.add(new TwoDivisibilityRule());
-    rules.add(new DivisibilityRule());
+    this.rules = rules;
   }
 
   public String getResult(Integer position) {
