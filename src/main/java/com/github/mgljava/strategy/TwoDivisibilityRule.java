@@ -24,7 +24,7 @@ public class TwoDivisibilityRule implements Rule {
       applicable = true;
     }
     if (position % words.getBuzz() == 0 && position % words.getWhizz() == 0) {
-      System.out.println(BUZZ_WHIZZ);
+      result = BUZZ_WHIZZ;
       applicable = true;
     }
     return result;

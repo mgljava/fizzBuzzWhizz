@@ -70,5 +70,4 @@ Buzz
     1. getResultByPosition(int position, Words words): String
     2. isApplicable(): boolean 设置标记
     3. clearApplicable: void 清除flag标记
-##### 6.不同的规则实现相同的接口有不同的实现    
-  
+##### 6.不同的规则实现相同的接口有不同的实现 
