@@ -1,34 +1,34 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgljava.entity.Words;
+import com.github.mgljava.entity.Word;
 
 public class ContainsRule implements Rule {
 
   private boolean applicable = false;
 
   @Override
-  public String getResultByPosition(int position, Words words) {
+  public String getResultByPosition(int position, Word word) {
+    applicable = false;
     String result = String.valueOf(position);
-    if (String.valueOf(position).contains(String.valueOf(words.getFizz()))) {
+    if (isContains(position, word.getFizz())) {
       applicable = true;
       result = FIZZ;
-    } else if (String.valueOf(position).contains(String.valueOf(words.getBuzz()))) {
+    } else if (isContains(position, word.getBuzz())) {
       applicable = true;
       result = BUZZ;
-    } else if (String.valueOf(position).contains(String.valueOf(words.getWhizz()))) {
+    } else if (isContains(position, word.getWhizz())) {
       applicable = true;
       result = WHIZZ;
     }
     return result;
   }
 
-  @Override
-  public boolean isApplicable() {
-    return applicable;
+  private boolean isContains(int position, Integer fizz) {
+    return String.valueOf(position).contains(String.valueOf(fizz));
   }
 
   @Override
-  public void clearApplicable() {
-    applicable = false;
+  public boolean isApplicable() {
+    return applicable;
   }
 }

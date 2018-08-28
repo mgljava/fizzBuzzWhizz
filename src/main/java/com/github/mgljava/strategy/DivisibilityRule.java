@@ -1,34 +1,34 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgljava.entity.Words;
+import com.github.mgljava.entity.Word;
 
 public class DivisibilityRule implements Rule {
 
   private boolean applicable = false;
 
   @Override
-  public String getResultByPosition(int position, Words words) {
+  public String getResultByPosition(int position, Word word) {
+    applicable = false;
     String result = String.valueOf(position);
-    if (position % words.getFizz() == 0) {
+    if (isaDivisibility(position, word.getFizz())) {
       result = FIZZ;
       applicable = true;
-    } else if (position % words.getBuzz() == 0) {
+    } else if (isaDivisibility(position, word.getBuzz())) {
       result = BUZZ;
       applicable = true;
-    } else if (position % words.getWhizz() == 0) {
+    } else if (isaDivisibility(position, word.getWhizz())) {
       result = WHIZZ;
       applicable = true;
     }
     return result;
   }
 
-  @Override
-  public boolean isApplicable() {
-    return applicable;
+  private boolean isaDivisibility(int position, Integer fizz) {
+    return position % fizz == 0;
   }
 
   @Override
-  public void clearApplicable() {
-    applicable = false;
+  public boolean isApplicable() {
+    return applicable;
   }
 }

@@ -61,13 +61,13 @@ Buzz
     3. whizz
 ##### 4.抽取规则引擎对象：RuleEngine
 * properties: 
-    1. words: Words
+    1. word: Words
     2. rules: List<Rule>
 ##### 5.抽取规则对象接口：Rule
 * properties:  
     1. 常量定义
 * behavior： 
-    1. getResultByPosition(int position, Words words): String
+    1. getResultByPosition(int position, Words word): String
     2. isApplicable(): boolean 设置标记
     3. clearApplicable: void 清除flag标记
 ##### 6.不同的规则实现相同的接口有不同的实现 

@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import com.github.mgljava.entity.Student;
 import com.github.mgljava.entity.Teacher;
-import com.github.mgljava.entity.Words;
+import com.github.mgljava.entity.Word;
 import com.github.mgljava.strategy.ContainsRule;
 import com.github.mgljava.strategy.Rule;
 import com.github.mgljava.strategy.RuleEngine;
@@ -14,12 +14,12 @@ import org.junit.jupiter.api.Test;
 
 public class StudentTest {
 
-  Words words = new Teacher().say(3, 5, 7);
+  Word word = new Teacher().say(3, 5, 7);
 
   @Test
   void should_get_fizz_by_contains_rule() {
     // given
-    RuleEngine ruleEngine = getRuleEngine(words, new ContainsRule());
+    RuleEngine ruleEngine = getRuleEngine(word, new ContainsRule());
     Student student = new Student(ruleEngine, 3);
 
     // when
@@ -32,7 +32,7 @@ public class StudentTest {
   @Test
   void should_get_buzz_by_contains_rule() {
     // given
-    RuleEngine ruleEngine = getRuleEngine(words, new ContainsRule());
+    RuleEngine ruleEngine = getRuleEngine(word, new ContainsRule());
     Student student = new Student(ruleEngine, 5);
 
     // when
@@ -45,7 +45,7 @@ public class StudentTest {
   @Test
   void should_get_whizz_by_contains_rule() {
     // given
-    RuleEngine ruleEngine = getRuleEngine(words, new ContainsRule());
+    RuleEngine ruleEngine = getRuleEngine(word, new ContainsRule());
     Student student = new Student(ruleEngine, 7);
 
     // when
@@ -58,7 +58,7 @@ public class StudentTest {
   @Test
   void should_get_fizz_buzz_by_twoDivisibility_rule() {
     // given
-    RuleEngine ruleEngine = getRuleEngine(words, new TwoDivisibilityRule());
+    RuleEngine ruleEngine = getRuleEngine(word, new TwoDivisibilityRule());
     Student student = new Student(ruleEngine, 15);
 
     // when
@@ -71,7 +71,7 @@ public class StudentTest {
   @Test
   void should_get_fizz_whizz_by_twoDivisibility_rule() {
     // given
-    RuleEngine ruleEngine = getRuleEngine(words, new TwoDivisibilityRule());
+    RuleEngine ruleEngine = getRuleEngine(word, new TwoDivisibilityRule());
     Student student = new Student(ruleEngine, 21);
 
     // when
@@ -84,7 +84,7 @@ public class StudentTest {
   @Test
   void should_get_buzz_whizz_by_twoDivisibility_rule() {
     // given
-    RuleEngine ruleEngine = getRuleEngine(words, new TwoDivisibilityRule());
+    RuleEngine ruleEngine = getRuleEngine(word, new TwoDivisibilityRule());
     Student student = new Student(ruleEngine, 35);
 
     // when
@@ -94,7 +94,7 @@ public class StudentTest {
     assertEquals("BuzzWhizz", result);
   }
 
-  private RuleEngine getRuleEngine(Words words, Rule rule) {
-    return new RuleEngine(words, Arrays.asList(rule));
+  private RuleEngine getRuleEngine(Word word, Rule rule) {
+    return new RuleEngine(word, Arrays.asList(rule));
   }
 }

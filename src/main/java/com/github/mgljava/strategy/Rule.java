@@ -1,6 +1,6 @@
 package com.github.mgljava.strategy;
 
-import com.github.mgljava.entity.Words;
+import com.github.mgljava.entity.Word;
 
 public interface Rule {
 
@@ -12,9 +12,7 @@ public interface Rule {
   String BUZZ_WHIZZ = "BuzzWhizz";
   String FIZZ_BUZZ_WHIZZ = "FizzBuzzWhizz";
 
-  String getResultByPosition(int position, Words words);
+  String getResultByPosition(int position, Word word);
 
   boolean isApplicable();
-
-  void clearApplicable();
 }

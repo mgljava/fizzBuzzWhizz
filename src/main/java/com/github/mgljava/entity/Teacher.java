@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Teacher {
 
-  private Words words;
+  private Word word;
 
-  public Words say(int fizz, int buzz, int whizz) {
-    return new Words(fizz, buzz, whizz);
+  public Word say(int fizz, int buzz, int whizz) {
+    return new Word(fizz, buzz, whizz);
   }
 }
